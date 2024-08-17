@@ -130,18 +130,11 @@
       "listId": ""
     },
     {
-      "id": "f744",
       "name": "Beetroot",
       "quantity": "1",
-      "category": "Other",
-      "listId": ""
-    },
-    {
-      "id": "e4d1",
-      "name": "Asiphe",
-      "quantity": "2",
-      "category": "Other",
-      "listId": ""
+      "category": "Household",
+      "listId": "",
+      "id": "f744"
     },
     {
       "id": "17d3",
@@ -175,6 +168,13 @@
       "id": "416e",
       "name": "Cabbage",
       "quantity": "2",
+      "category": "Household",
+      "listId": ""
+    },
+    {
+      "id": "d99d",
+      "name": "Beetroot",
+      "quantity": "1",
       "category": "Household",
       "listId": ""
     }
