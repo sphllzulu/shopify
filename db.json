@@ -1,0 +1,182 @@
+{
+  "users": [
+    {
+      "id": "f2bd",
+      "email": "sphllzulu@gmail.com",
+      "password": "Ntsw3mb4!!"
+    },
+    {
+      "id": "12fa",
+      "email": "sphllzulu@gmail.com",
+      "password": "Ntsw3mb4!!"
+    },
+    {
+      "id": "2e56",
+      "email": "coli@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "4d2d",
+      "email": "khabo@gmail.com",
+      "password": "567890"
+    },
+    {
+      "id": "c18c",
+      "email": "khabo@gmail.com",
+      "password": "567890"
+    },
+    {
+      "id": "f184",
+      "email": "khabo@gmail.com",
+      "password": "567890"
+    },
+    {
+      "id": "8d54",
+      "email": "thobile@google.com",
+      "password": "ghfdfhgd"
+    },
+    {
+      "id": "9f01",
+      "email": "benji@google.com",
+      "password": "12345"
+    },
+    {
+      "id": "4a31",
+      "email": "benji@google.com",
+      "password": "12345"
+    },
+    {
+      "id": "a276",
+      "email": "benjis@google.com",
+      "password": "12345y"
+    },
+    {
+      "id": "",
+      "email": "benjisEmbir@google.com",
+      "password": "12345y"
+    },
+    {
+      "id": "85b1",
+      "email": "benjisEmbirs@google.com",
+      "password": "12345yh"
+    },
+    {
+      "id": "4814",
+      "email": "benjisEmbirs@google.com",
+      "password": "12345yh"
+    },
+    {
+      "id": "287d",
+      "email": "benjisEmbirs@google.com",
+      "password": "12345yh"
+    },
+    {
+      "id": "03ed",
+      "email": "benjisEmbirsa@google.com",
+      "password": "12345yhg"
+    },
+    {
+      "id": "5a5c",
+      "email": "siphelele@gmail.com",
+      "password": "Ntsdfhsvf"
+    },
+    {
+      "id": "ed1d",
+      "email": "siphelele@gmail.com",
+      "password": "Ntsdfhsvf"
+    },
+    {
+      "id": "4d2d",
+      "email": "siphelelez@gmail.com",
+      "password": "Ntsdfhsvf"
+    },
+    {
+      "id": "bc58",
+      "email": "siphelelezul@gmail.com",
+      "password": "Ntsdfhsvf"
+    },
+    {
+      "id": "4d2c",
+      "email": "siphelelezul@gmail.com",
+      "password": "Ntsdfhsvf"
+    },
+    {
+      "id": "4673",
+      "email": "sphllzulu@gmail.com",
+      "password": "Ntsw3mb45hhg"
+    }
+  ],
+  "shoppingLists": [],
+  "items": [
+    {
+      "id": "2624",
+      "name": "Cabbage",
+      "quantity": "1",
+      "category": "Groceries",
+      "listId": ""
+    },
+    {
+      "id": "ed00",
+      "name": "Strawberries",
+      "quantity": "2",
+      "category": "Household",
+      "listId": ""
+    },
+    {
+      "id": "3348",
+      "name": "Rasberry",
+      "quantity": "2",
+      "category": "Household",
+      "listId": ""
+    },
+    {
+      "id": "3c10",
+      "name": "Kota",
+      "quantity": "2",
+      "category": "Other",
+      "listId": ""
+    },
+    {
+      "id": "f744",
+      "name": "Beetroot",
+      "quantity": "1",
+      "category": "Other",
+      "listId": ""
+    },
+    {
+      "id": "e4d1",
+      "name": "Asiphe",
+      "quantity": "2",
+      "category": "Other",
+      "listId": ""
+    },
+    {
+      "id": "17d3",
+      "name": "Asiphe",
+      "quantity": "2",
+      "category": "Groceries",
+      "listId": ""
+    },
+    {
+      "id": "3d9c",
+      "name": "Asiphe",
+      "quantity": "2",
+      "category": "Groceries",
+      "listId": ""
+    },
+    {
+      "id": "0059",
+      "name": "Kota",
+      "quantity": "1",
+      "category": "Groceries",
+      "listId": ""
+    },
+    {
+      "id": "adb3",
+      "name": "Rasberry",
+      "quantity": "1",
+      "category": "Groceries",
+      "listId": ""
+    }
+  ]
+}
