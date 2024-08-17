@@ -42,6 +42,7 @@ const ShoppingList = () => {
   const [newItemCategory, setNewItemCategory] = useState('');
   const [selectedListId, setSelectedListId] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
+  const [editItemId, setEditItemId] = useState(null); // State for item to edit
 
   const theme = useTheme();
 
@@ -82,11 +83,19 @@ const ShoppingList = () => {
   const handleDeleteItem = async (itemId) => {
     await axios.delete(`http://localhost:3001/items/${itemId}`);
     dispatch(deleteItem(itemId));
+    setFilteredItems(filteredItems.filter(item => item.id !== itemId)); // Update filteredItems
+  };
+
+  const handleEditItem = async (item) => {
+    // Logic for editing item
+    console.log('Edit item:', item);
+    setEditItemId(item.id); // Set the ID of the item to be edited
   };
 
   const handleFilterByCategory = (category) => {
     const filtered = items.filter(item => item.category === category);
     setFilteredItems(filtered);
+    handleOpenDrawer();
   };
 
   return (
@@ -177,7 +186,7 @@ const ShoppingList = () => {
           {items.filter(item => item.listId === list.id).map(item => (
             <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-              <IconButton edge="end" aria-label="edit">
+              <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
                 <EditIcon />
               </IconButton>
               <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
@@ -220,11 +229,17 @@ const ShoppingList = () => {
           },
         }}
       >
-        <Typography variant="h6" gutterBottom>Recently Added Item</Typography>
+        <Typography variant="h6" gutterBottom>Recently Added Items</Typography>
         <List>
           {filteredItems.map(item => (
-            <ListItem key={item.id}>
+            <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
+              <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
+                <EditIcon />
+              </IconButton>
+              <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
+                <DeleteIcon />
+              </IconButton>
             </ListItem>
           ))}
         </List>
@@ -250,3 +265,4 @@ const ShoppingList = () => {
 };
 
 export default ShoppingList;
+
