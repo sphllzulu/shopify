@@ -1,274 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setLists, setItems, addItem, deleteItem } from './shoppingListSlice';
-// import axios from 'axios';
-// import {
-//   Container,
-//   Button,
-//   Typography,
-//   TextField,
-//   Select,
-//   MenuItem,
-//   FormControl,
-//   InputLabel,
-//   Modal,
-//   Box,
-//   Drawer,
-//   IconButton,
-//   List,
-//   ListItem,
-//   ListItemText,
-//   ListItemIcon,
-//   Divider,
-//   Fab
-// } from '@mui/material';
-// import { orange } from '@mui/material/colors';
-// import { useTheme } from '@mui/material/styles';
-// import CategoryIcon from '@mui/icons-material/Category';
-// import GroceryIcon from '@mui/icons-material/ShoppingCart';
-// import HouseholdIcon from '@mui/icons-material/Home';
-// import OtherIcon from '@mui/icons-material/MoreHoriz';
-// import DeleteIcon from '@mui/icons-material/Delete';
-// import EditIcon from '@mui/icons-material/Edit';
-
-// const ShoppingList = () => {
-//   const dispatch = useDispatch();
-//   const lists = useSelector((state) => state.shoppingList.lists);
-//   const items = useSelector((state) => state.shoppingList.items);
-//   const [openModal, setOpenModal] = useState(false);
-//   const [drawerOpen, setDrawerOpen] = useState(false);
-//   const [newItemName, setNewItemName] = useState('');
-//   const [newItemQuantity, setNewItemQuantity] = useState('');
-//   const [newItemCategory, setNewItemCategory] = useState('');
-//   const [selectedListId, setSelectedListId] = useState('');
-//   const [filteredItems, setFilteredItems] = useState([]);
-//   const [editItemId, setEditItemId] = useState(null); // State for item to edit
-
-//   const theme = useTheme();
-
-//   useEffect(() => {
-//     const fetchLists = async () => {
-//       const response = await axios.get('http://localhost:3001/shoppingLists');
-//       dispatch(setLists(response.data));
-//     };
-
-//     const fetchItems = async () => {
-//       const response = await axios.get('http://localhost:3001/items');
-//       dispatch(setItems(response.data));
-//     };
-
-//     fetchLists();
-//     fetchItems();
-//   }, [dispatch]);
-
-//   const handleOpenModal = () => setOpenModal(true);
-//   const handleCloseModal = () => setOpenModal(false);
-//   const handleOpenDrawer = () => setDrawerOpen(true);
-//   const handleCloseDrawer = () => setDrawerOpen(false);
-
-//   const handleAddItem = async () => {
-//     const newItem = {
-//       name: newItemName,
-//       quantity: newItemQuantity,
-//       category: newItemCategory,
-//       listId: selectedListId,
-//     };
-//     const response = await axios.post('http://localhost:3001/items', newItem);
-//     dispatch(addItem(response.data));
-//     setFilteredItems([response.data]);
-//     handleCloseModal();
-//     handleOpenDrawer();
-//   };
-
-//   const handleDeleteItem = async (itemId) => {
-//     await axios.delete(`http://localhost:3001/items/${itemId}`);
-//     dispatch(deleteItem(itemId));
-//     setFilteredItems(filteredItems.filter(item => item.id !== itemId)); // Update filteredItems
-//   };
-
-//   const handleEditItem = async (item) => {
-//     // Logic for editing item
-//     console.log('Edit item:', item);
-//     setEditItemId(item.id); // Set the ID of the item to be edited
-//   };
-
-//   const handleFilterByCategory = (category) => {
-//     const filtered = items.filter(item => item.category === category);
-//     setFilteredItems(filtered);
-//     handleOpenDrawer();
-//   };
-
-//   return (
-//     <Container>
-//       <Button
-//         variant="contained"
-//         color="primary"
-//         onClick={handleOpenModal}
-//         sx={{ backgroundColor: orange[500], '&:hover': { backgroundColor: orange[700] }, margin: '20px 0' }}
-//       >
-//         Add Shopping List Item
-//       </Button>
-
-//       <Modal open={openModal} onClose={handleCloseModal}>
-//         <Box
-//           sx={{
-//             position: 'absolute',
-//             top: '50%',
-//             left: '50%',
-//             transform: 'translate(-50%, -50%)',
-//             width: '90%',
-//             maxWidth: 400,
-//             bgcolor: 'background.paper',
-//             borderRadius: '8px',
-//             boxShadow: 24,
-//             p: 4,
-//             animation: 'fadeIn 0.5s ease-in-out',
-//             '@keyframes fadeIn': {
-//               from: { opacity: 0, transform: 'translate(-50%, -45%)' },
-//               to: { opacity: 1, transform: 'translate(-50%, -50%)' },
-//             },
-//           }}
-//         >
-//           <Typography variant="h6" gutterBottom>Add New Item</Typography>
-//           <TextField
-//             label="Item Name"
-//             fullWidth
-//             value={newItemName}
-//             onChange={(e) => setNewItemName(e.target.value)}
-//             margin="normal"
-//           />
-//           <TextField
-//             label="Quantity"
-//             fullWidth
-//             value={newItemQuantity}
-//             onChange={(e) => setNewItemQuantity(e.target.value)}
-//             margin="normal"
-//           />
-//           <FormControl fullWidth margin="normal">
-//             <InputLabel>Category</InputLabel>
-//             <Select
-//               value={newItemCategory}
-//               onChange={(e) => setNewItemCategory(e.target.value)}
-//             >
-//               <MenuItem value="Groceries">Groceries</MenuItem>
-//               <MenuItem value="Household">Household</MenuItem>
-//               <MenuItem value="Other">Other</MenuItem>
-//             </Select>
-//           </FormControl>
-//           <FormControl fullWidth margin="normal">
-//             <InputLabel>Shopping List</InputLabel>
-//             <Select
-//               value={selectedListId}
-//               onChange={(e) => setSelectedListId(e.target.value)}
-//             >
-//               {lists.map((list) => (
-//                 <MenuItem key={list.id} value={list.id}>{list.name}</MenuItem>
-//               ))}
-//             </Select>
-//           </FormControl>
-//           <Button
-//             variant="contained"
-//             color="primary"
-//             fullWidth
-//             sx={{ backgroundColor: orange[500], '&:hover': { backgroundColor: orange[700] }, mt: 2 }}
-//             onClick={handleAddItem}
-//           >
-//             Add Item
-//           </Button>
-//         </Box>
-//       </Modal>
-
-//       {lists.map((list) => (
-//         <div key={list.id}>
-//           <Typography variant="h5" sx={{ marginTop: theme.spacing(2), color: orange[500] }}>
-//             {list.name}
-//           </Typography>
-//           {items.filter(item => item.listId === list.id).map(item => (
-//             <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-//               <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-//               <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
-//                 <EditIcon />
-//               </IconButton>
-//               <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
-//                 <DeleteIcon />
-//               </IconButton>
-//             </ListItem>
-//           ))}
-//         </div>
-//       ))}
-
-//       <Fab
-//         color="primary"
-//         aria-label="add"
-//         sx={{
-//           position: 'fixed',
-//           bottom: theme.spacing(2),
-//           right: theme.spacing(2),
-//           backgroundColor: orange[500],
-//           '&:hover': { backgroundColor: orange[700] },
-//         }}
-//         onClick={handleOpenDrawer}
-//       >
-//         <CategoryIcon />
-//       </Fab>
-
-//       <Drawer
-//         anchor="bottom"
-//         open={drawerOpen}
-//         onClose={handleCloseDrawer}
-//         sx={{
-//           '& .MuiDrawer-paper': {
-//             borderRadius: '20px 20px 0 0',
-//             padding: theme.spacing(2),
-//             backgroundColor: orange[100],
-//             animation: 'slideUp 0.5s ease-in-out',
-//             '@keyframes slideUp': {
-//               from: { transform: 'translateY(100%)' },
-//               to: { transform: 'translateY(0)' },
-//             },
-//           },
-//         }}
-//       >
-//         <Typography variant="h6" gutterBottom>Recently Added Items</Typography>
-//         <List>
-//           {filteredItems.map(item => (
-//             <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-//               <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-//               <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
-//                 <EditIcon />
-//               </IconButton>
-//               <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
-//                 <DeleteIcon />
-//               </IconButton>
-//             </ListItem>
-//           ))}
-//         </List>
-//         <Divider />
-//         <Typography variant="h6" gutterBottom>Categories</Typography>
-//         <List sx={{ display: 'flex', justifyContent: 'space-around' }}>
-//           <ListItem button onClick={() => handleFilterByCategory('Groceries')}>
-//             <ListItemIcon><GroceryIcon /></ListItemIcon>
-//             <ListItemText primary="Groceries" />
-//           </ListItem>
-//           <ListItem button onClick={() => handleFilterByCategory('Household')}>
-//             <ListItemIcon><HouseholdIcon /></ListItemIcon>
-//             <ListItemText primary="Household" />
-//           </ListItem>
-//           <ListItem button onClick={() => handleFilterByCategory('Other')}>
-//             <ListItemIcon><OtherIcon /></ListItemIcon>
-//             <ListItemText primary="Other" />
-//           </ListItem>
-//         </List>
-//       </Drawer>
-//     </Container>
-//   );
-// };
-
-// export default ShoppingList;
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLists, setItems, addItem, deleteItem, updateItem } from './shoppingListSlice';
@@ -294,18 +23,21 @@ import {
   Fab
 } from '@mui/material';
 import { orange } from '@mui/material/colors';
+import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import { useTheme } from '@mui/material/styles';
-import CategoryIcon from '@mui/icons-material/Category';
 import GroceryIcon from '@mui/icons-material/ShoppingCart';
 import HouseholdIcon from '@mui/icons-material/Home';
 import OtherIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
+import Carousel from './Carousel';
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
   const lists = useSelector((state) => state.shoppingList.lists);
   const items = useSelector((state) => state.shoppingList.items);
+  const user = useSelector((state) => state.user); // Assuming user data is stored in the user slice
   const [openModal, setOpenModal] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [newItemName, setNewItemName] = useState('');
@@ -314,6 +46,25 @@ const ShoppingList = () => {
   const [selectedListId, setSelectedListId] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
   const [editItemId, setEditItemId] = useState(null); // State for item to edit
+  const [categoryFilter, setCategoryFilter] = useState(''); // State for category filter
+
+  const slides = [
+    {
+      image: 'banner.jpg',
+      title: 'Slide 1',
+      description: 'This is the first slide.',
+    },
+    {
+      image: 'groceries.jpg',
+      title: 'Slide 2',
+      description: 'This is the second slide.',
+    },
+    {
+      image: 'groceries.jpg',
+      title: 'Slide 3',
+      description: 'This is the third slide.',
+    },
+  ];
 
   const theme = useTheme();
 
@@ -345,6 +96,17 @@ const ShoppingList = () => {
     }
   }, [editItemId, items]);
 
+  useEffect(() => {
+    if (user.userId) {
+      const userItems = items.filter(item => item.userId === user.userId);
+      if (categoryFilter) {
+        setFilteredItems(userItems.filter(item => item.category === categoryFilter));
+      } else {
+        setFilteredItems(userItems);
+      }
+    }
+  }, [items, user.userId, categoryFilter]);
+
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -359,10 +121,10 @@ const ShoppingList = () => {
       quantity: newItemQuantity,
       category: newItemCategory,
       listId: selectedListId,
+      userId: user.userId, // Associate the item with the current user
     };
     const response = await axios.post('http://localhost:3001/items', newItem);
     dispatch(addItem(response.data));
-    setFilteredItems([response.data]);
     handleCloseModal();
     handleOpenDrawer();
   };
@@ -373,10 +135,10 @@ const ShoppingList = () => {
       quantity: newItemQuantity,
       category: newItemCategory,
       listId: selectedListId,
+      userId: user.userId, // Associate the item with the current user
     };
     const response = await axios.put(`http://localhost:3001/items/${editItemId}`, updatedItem);
     dispatch(updateItem(response.data));
-    setFilteredItems(filteredItems.map(item => item.id === editItemId ? response.data : item)); // Update filteredItems
     handleCloseModal();
     handleOpenDrawer();
   };
@@ -384,53 +146,77 @@ const ShoppingList = () => {
   const handleDeleteItem = async (itemId) => {
     await axios.delete(`http://localhost:3001/items/${itemId}`);
     dispatch(deleteItem(itemId));
-    setFilteredItems(filteredItems.filter(item => item.id !== itemId)); // Update filteredItems
   };
 
-  const handleEditItem = async (item) => {
-    setEditItemId(item.id); // Set the ID of the item to be edited
+  const handleEditItem = (item) => {
+    setEditItemId(item.id); // Set the item to be edited
   };
 
-  const handleFilterByCategory = (category) => {
-    const filtered = items.filter(item => item.category === category);
-    setFilteredItems(filtered);
+  const handleCategoryFilter = (category) => {
+    setCategoryFilter(category);
     handleOpenDrawer();
   };
 
   return (
+    <div>
+      <Carousel slides={slides} />
     <Container>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleOpenModal}
-        sx={{ backgroundColor: orange[500], '&:hover': { backgroundColor: orange[700] }, margin: '20px 0' }}
+      
+      {/* <Typography variant="h4" gutterBottom>Shopping List</Typography> */}
+      <Fab variant="contained" color="primary" onClick={handleOpenModal} sx={{ position: 'fixed', bottom: 20, background:'#F3C402' }}><AddIcon /></Fab>
+      <Drawer anchor="bottom" open={drawerOpen} onClose={handleCloseDrawer}
+      sx={{
+                '& .MuiDrawer-paper': {
+               borderRadius: '20px 20px 0 0',
+                 padding: theme.spacing(2),
+                   backgroundColor:'white',
+                  animation: 'slideUp 0.5s ease-in-out',
+                   '@keyframes slideUp': {
+                     from: { transform: 'translateY(100%)' },
+                  to: { transform: 'translateY(0)' },
+                  },
+               },
+               }}
+      
       >
-        Add Shopping List Item
-      </Button>
-
-      <Modal open={openModal} onClose={handleCloseModal}>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '90%',
-            maxWidth: 400,
-            bgcolor: 'background.paper',
-            borderRadius: '8px',
-            boxShadow: 24,
-            p: 4,
-            animation: 'fadeIn 0.5s ease-in-out',
-            '@keyframes fadeIn': {
-              from: { opacity: 0, transform: 'translate(-50%, -45%)' },
-              to: { opacity: 1, transform: 'translate(-50%, -50%)' },
-            },
-          }}
-        >
-          <Typography variant="h6" gutterBottom>
-            {editItemId ? 'Edit Item' : 'Add New Item'}
-          </Typography>
+        <List>
+          {filteredItems.map(item => (
+            <ListItem key={item.id}>
+              <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity} | Category: ${item.category}`} />
+              <ListItemIcon>
+                <IconButton onClick={() => handleEditItem(item)}>
+                  <EditIcon />
+                </IconButton>
+                <IconButton onClick={() => handleDeleteItem(item.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </ListItemIcon>
+            </ListItem>
+          ))}
+          <Divider />
+          <div>
+          <ListItem>
+            <Button onClick={() => handleCategoryFilter('')} fullWidth sx={{color:'#f3c402'}}>
+              Categories
+            </Button>
+          </ListItem>
+          <ListItem sx={{display:'flex', justifyContent:'space-around'}}>
+            <IconButton onClick={() => handleCategoryFilter('Grocery')}>
+              <GroceryIcon />
+            </IconButton>
+            <IconButton onClick={() => handleCategoryFilter('Household')}>
+              <HouseholdIcon />
+            </IconButton>
+            <IconButton onClick={() => handleCategoryFilter('Other')}>
+              <OtherIcon />
+            </IconButton>
+          </ListItem>
+          </div>
+        </List>
+      </Drawer>
+      <Modal open={openModal} onClose={handleCloseModal} sx={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <Box sx={{ ...theme.modalStyle, background:'white', width:'80%', padding:'20px' }}>
+          <Typography variant="h6" gutterBottom>{editItemId ? 'Edit Item' : 'Add Item'}</Typography>
           <TextField
             label="Item Name"
             fullWidth
@@ -440,6 +226,7 @@ const ShoppingList = () => {
           />
           <TextField
             label="Quantity"
+            type="number"
             fullWidth
             value={newItemQuantity}
             onChange={(e) => setNewItemQuantity(e.target.value)}
@@ -451,117 +238,37 @@ const ShoppingList = () => {
               value={newItemCategory}
               onChange={(e) => setNewItemCategory(e.target.value)}
             >
-              <MenuItem value="Groceries">Groceries</MenuItem>
+              <MenuItem value="Grocery">Grocery</MenuItem>
               <MenuItem value="Household">Household</MenuItem>
               <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Shopping List</InputLabel>
+          {/* <FormControl fullWidth margin="normal">
+            <InputLabel>List</InputLabel>
             <Select
               value={selectedListId}
               onChange={(e) => setSelectedListId(e.target.value)}
             >
-              {lists.map((list) => (
+              {lists.map(list => (
                 <MenuItem key={list.id} value={list.id}>{list.name}</MenuItem>
               ))}
             </Select>
-          </FormControl>
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{ backgroundColor: orange[500], '&:hover': { backgroundColor: orange[700] }, mt: 2 }}
-            onClick={editItemId ? handleUpdateItem : handleAddItem}
-          >
+          </FormControl> */}
+          <Button variant="contained" color="primary" onClick={editItemId ? handleUpdateItem : handleAddItem} fullWidth sx={{background:'#FECF06'}}>
             {editItemId ? 'Update Item' : 'Add Item'}
           </Button>
         </Box>
       </Modal>
-
-      {lists.map((list) => (
-        <div key={list.id}>
-          <Typography variant="h5" sx={{ marginTop: theme.spacing(2), color: orange[500] }}>
-            {list.name}
-          </Typography>
-          {items.filter(item => item.listId === list.id).map(item => (
-            <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-              <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
-                <EditIcon />
-              </IconButton>
-              <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
-                <DeleteIcon />
-              </IconButton>
-            </ListItem>
-          ))}
-        </div>
-      ))}
-
       <Fab
         color="primary"
-        aria-label="add"
-        sx={{
-          position: 'fixed',
-          bottom: theme.spacing(2),
-          right: theme.spacing(2),
-          backgroundColor: orange[500],
-          '&:hover': { backgroundColor: orange[700] },
-        }}
+        aria-label="open"
         onClick={handleOpenDrawer}
+        sx={{ position: 'fixed', bottom: 16, right: 16, background:'#F3C402' }}
       >
-        <CategoryIcon />
+        <KeyboardArrowUpRoundedIcon/>
       </Fab>
-
-      <Drawer
-        anchor="bottom"
-        open={drawerOpen}
-        onClose={handleCloseDrawer}
-        sx={{
-          '& .MuiDrawer-paper': {
-            borderRadius: '20px 20px 0 0',
-            padding: theme.spacing(2),
-            backgroundColor: orange[100],
-            animation: 'slideUp 0.5s ease-in-out',
-            '@keyframes slideUp': {
-              from: { transform: 'translateY(100%)' },
-              to: { transform: 'translateY(0)' },
-            },
-          },
-        }}
-      >
-        <Typography variant="h6" gutterBottom>Recently Added Items</Typography>
-        <List>
-          {filteredItems.map(item => (
-            <ListItem key={item.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-              <IconButton edge="end" aria-label="edit" onClick={() => handleEditItem(item)}>
-                <EditIcon />
-              </IconButton>
-              <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteItem(item.id)}>
-                <DeleteIcon />
-              </IconButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <Typography variant="h6" gutterBottom>Categories</Typography>
-        <List sx={{ display: 'flex', justifyContent: 'space-around' }}>
-          <ListItem button onClick={() => handleFilterByCategory('Groceries')}>
-            <ListItemIcon><GroceryIcon /></ListItemIcon>
-            <ListItemText primary="Groceries" />
-          </ListItem>
-          <ListItem button onClick={() => handleFilterByCategory('Household')}>
-            <ListItemIcon><HouseholdIcon /></ListItemIcon>
-            <ListItemText primary="Household" />
-          </ListItem>
-          <ListItem button onClick={() => handleFilterByCategory('Other')}>
-            <ListItemIcon><OtherIcon /></ListItemIcon>
-            <ListItemText primary="Other" />
-          </ListItem>
-        </List>
-      </Drawer>
     </Container>
+    </div>
   );
 };
 

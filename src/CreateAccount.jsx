@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Alert } from '@mui/material';
 import axios from 'axios';
+import './CreateAccount.css'
 
 const CreateAccount = () => {
   const [email, setEmail] = useState('');
@@ -36,7 +37,8 @@ const CreateAccount = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <div className='whole' style={{display:'flex', alignItems:'center'}}>
+    <Container maxWidth="xs" >
       <Typography variant="h4" gutterBottom>Create Account</Typography>
       {successMessage && <Alert severity="success">{successMessage}</Alert>}
       {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
@@ -55,8 +57,11 @@ const CreateAccount = () => {
         onChange={(e) => setPassword(e.target.value)}
         margin="normal"
       />
-      <Button variant="contained" color="primary" onClick={handleCreateAccount} fullWidth>Create Account</Button>
+      <Button variant="contained"  onClick={handleCreateAccount} fullWidth
+      sx={{background:'#FECF06'}}
+      >Create Account</Button>
     </Container>
+    </div>
   );
 };
 

@@ -104,6 +104,31 @@
       "id": "4673",
       "email": "sphllzulu@gmail.com",
       "password": "Ntsw3mb45hhg"
+    },
+    {
+      "id": "7076",
+      "email": "coli@gmail.com",
+      "password": "jdhfghdg"
+    },
+    {
+      "id": "831b",
+      "email": "colis@gmail.com",
+      "password": "jdhfghdglj"
+    },
+    {
+      "id": "83af",
+      "email": "lakhe@gmail.com",
+      "password": "fsdfhsdghs"
+    },
+    {
+      "id": "bbfd",
+      "email": "sbuda@google.com",
+      "password": "hsgfjhgsjfh"
+    },
+    {
+      "id": "8932",
+      "email": "lakhe@gmail.com",
+      "password": "fsdfhsdghs"
     }
   ],
   "shoppingLists": [],
@@ -137,20 +162,6 @@
       "id": "f744"
     },
     {
-      "id": "17d3",
-      "name": "Asiphe",
-      "quantity": "2",
-      "category": "Groceries",
-      "listId": ""
-    },
-    {
-      "id": "3d9c",
-      "name": "Asiphe",
-      "quantity": "2",
-      "category": "Groceries",
-      "listId": ""
-    },
-    {
       "id": "0059",
       "name": "Kota",
       "quantity": "1",
@@ -177,6 +188,62 @@
       "quantity": "1",
       "category": "Household",
       "listId": ""
+    },
+    {
+      "id": "0903",
+      "name": "",
+      "quantity": "",
+      "category": "",
+      "listId": "",
+      "userId": "2e56"
+    },
+    {
+      "id": "b2b9",
+      "name": "cabbage",
+      "quantity": "1",
+      "category": "Household",
+      "listId": "",
+      "userId": "2e56"
+    },
+    {
+      "id": "3d8f",
+      "name": "dgdfgd",
+      "quantity": "2",
+      "category": "Other",
+      "listId": "",
+      "userId": "831b"
+    },
+    {
+      "id": "e0ff",
+      "name": "fdsfsdf",
+      "quantity": "4",
+      "category": "Household",
+      "listId": "",
+      "userId": "83af"
+    },
+    {
+      "id": "fc99",
+      "name": "milk",
+      "quantity": "4",
+      "category": "Household",
+      "listId": "",
+      "userId": "83af"
+    },
+    {
+      "id": "e006",
+      "name": "kotas",
+      "quantity": "3",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "83af"
+    },
+    {
+      "id": "01bd",
+      "name": "grapes",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "f2bd"
     }
   ]
 }
