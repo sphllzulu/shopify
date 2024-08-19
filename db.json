@@ -129,6 +129,16 @@
       "id": "8932",
       "email": "lakhe@gmail.com",
       "password": "fsdfhsdghs"
+    },
+    {
+      "id": "aba2",
+      "email": "lakhe@gmail.com",
+      "password": "fsdfhsdghs"
+    },
+    {
+      "id": "c15b",
+      "email": "colile@google.com",
+      "password": "hdsjgfdgd"
     }
   ],
   "shoppingLists": [],
@@ -244,6 +254,22 @@
       "category": "Household",
       "listId": "",
       "userId": "f2bd"
+    },
+    {
+      "id": "05c6",
+      "name": "beetroot",
+      "quantity": "3",
+      "category": "Household",
+      "listId": "",
+      "userId": "c15b"
+    },
+    {
+      "id": "26a3",
+      "name": "green pepper",
+      "quantity": "2",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "c15b"
     }
   ]
 }
