@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {setLists,setItems,addItem,deleteItem,updateItem,} from "./shoppingListSlice";
 import axios from "axios";
 import {
-  Container,
-  Button,
-  Typography,
-  TextField,
-  Select,
+  Container,Button,Typography,TextField,Select,
   MenuItem,
   FormControl,
   InputLabel,
@@ -20,9 +16,10 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
-  Fab,
+  Fab
 } from "@mui/material";
 // import { orange } from '@mui/material/colors';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { useTheme } from "@mui/material/styles";
 import GroceryIcon from "@mui/icons-material/ShoppingCart";
@@ -31,7 +28,9 @@ import OtherIcon from "@mui/icons-material/MoreHoriz";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
+import SendIcon from '@mui/icons-material/Send';
 import Carousel from "./Carousel";
+
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -50,9 +49,11 @@ const ShoppingList = () => {
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
 
 
+
+
   const slides = [
     {
-      image: "banner.jpg",
+      image: "bag.jpg",
       title: "Slide 1",
       description: "This is the first slide.",
     },
@@ -131,6 +132,15 @@ const ShoppingList = () => {
   }, [items, user.userId, categoryFilter, searchQuery]);
   
 
+  const handleSendItems = () => {
+    const emailBody = filteredItems
+      .map((item) => `Item: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`)
+      .join("\n");
+  
+    const mailtoLink = `mailto:?subject=Shopping List&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+  };
+
 
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => {
@@ -187,6 +197,7 @@ const ShoppingList = () => {
 
   return (
     <div>
+      
       <Carousel slides={slides} />
       <Container>
         {/* <Typography variant="h4" gutterBottom>Shopping List</Typography> */}
@@ -238,6 +249,7 @@ const ShoppingList = () => {
                   <IconButton onClick={() => handleDeleteItem(item.id)}>
                     <DeleteIcon />
                   </IconButton>
+                  
                 </ListItemIcon>
               </ListItem>
             ))}
@@ -249,7 +261,7 @@ const ShoppingList = () => {
                   fullWidth
                   sx={{ color: "#f3c402" }}
                 >
-                  Categories
+                  All Categories
                 </Button>
               </ListItem>
               <ListItem
@@ -264,6 +276,10 @@ const ShoppingList = () => {
                 <IconButton onClick={() => handleCategoryFilter("Other")}>
                   <OtherIcon />
                 </IconButton>
+                <IconButton  onClick={handleSendItems}>
+                  <SendIcon />
+                </IconButton>
+                
               </ListItem>
             </div>
           </List>
@@ -283,6 +299,7 @@ const ShoppingList = () => {
               background: "white",
               width: "80%",
               padding: "20px",
+              animation: "slideUp 0.5s ease-in-out"
             }}
           >
             <Typography variant="h6" gutterBottom>
@@ -344,10 +361,10 @@ const ShoppingList = () => {
             position: "fixed",
             bottom: 16,
             right: 16,
-            background: "#F3C402",
+            background: "transparent",
           }}
         >
-          <KeyboardArrowUpRoundedIcon />
+          <KeyboardDoubleArrowUpIcon/>
         </Fab>
       </Container>
     </div>

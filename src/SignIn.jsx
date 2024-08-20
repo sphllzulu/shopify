@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './userSlice';
 import { Container, TextField, Button, Typography, Alert } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignIn = () => {
@@ -30,7 +30,7 @@ const SignIn = () => {
 
   return (
     <div  className='whole' style={{display:'flex', alignItems:'center'}}>
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" sx={{background:'white', padding:'10px', opacity:'90%', boxShadow:'0 0 5px 5px'}}>
       <Typography variant="h4" gutterBottom>Sign In</Typography>
       {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
       <TextField
@@ -50,6 +50,7 @@ const SignIn = () => {
       />
       <Button variant="contained" color="primary" onClick={handleSignIn} fullWidth
       sx={{background:'#FECF06'}}>Sign In</Button>
+      <Link to="/create-account"><Typography sx={{paddingTop:'10px'}}>Click to create account</Typography></Link> 
     </Container>
     </div>
   );

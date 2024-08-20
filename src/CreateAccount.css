@@ -1,5 +1,8 @@
 .whole{
-    background: url('groceries.jpg');
+    background: url('shopping.jpg');
+    backdrop-filter: ('10px');
+    background-position:cover;
+    background-size: cover;
     height: 100vh;
     
 }
