@@ -41,36 +41,6 @@
       "password": "12345"
     },
     {
-      "id": "4a31",
-      "email": "benji@google.com",
-      "password": "12345"
-    },
-    {
-      "id": "a276",
-      "email": "benjis@google.com",
-      "password": "12345y"
-    },
-    {
-      "id": "",
-      "email": "benjisEmbir@google.com",
-      "password": "12345y"
-    },
-    {
-      "id": "85b1",
-      "email": "benjisEmbirs@google.com",
-      "password": "12345yh"
-    },
-    {
-      "id": "4814",
-      "email": "benjisEmbirs@google.com",
-      "password": "12345yh"
-    },
-    {
-      "id": "287d",
-      "email": "benjisEmbirs@google.com",
-      "password": "12345yh"
-    },
-    {
       "id": "03ed",
       "email": "benjisEmbirsa@google.com",
       "password": "12345yhg"
@@ -141,19 +111,9 @@
       "password": "hdsjgfdgd"
     },
     {
-      "id": "b673",
-      "email": "colile@google.com",
-      "password": "hdsjgfdgd"
-    },
-    {
-      "id": "7d8c",
-      "email": "asiphile@google.com",
-      "password": "jhdkghdfhd"
-    },
-    {
-      "id": "31d4",
-      "email": "asiphile@google.com",
-      "password": "jhdkghdfhd"
+      "id": "2dac",
+      "email": "mahlatse",
+      "password": "gfghfhj"
     }
   ],
   "shoppingLists": [],
@@ -293,6 +253,38 @@
       "category": "Household",
       "listId": "",
       "userId": "7d8c"
+    },
+    {
+      "id": "c9ed",
+      "name": "cabbage",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "bbfd"
+    },
+    {
+      "id": "91ce",
+      "name": "cabbage",
+      "quantity": "2",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "2dac"
+    },
+    {
+      "id": "fc41",
+      "name": "tv",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "2dac"
+    },
+    {
+      "id": "be50",
+      "name": "remote",
+      "quantity": "2",
+      "category": "Other",
+      "listId": "",
+      "userId": "2dac"
     }
   ]
 }

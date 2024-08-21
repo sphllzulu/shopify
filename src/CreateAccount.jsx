@@ -2,14 +2,17 @@
 
 
 import React, { useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Alert } from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
+import { Container, TextField, Button, Typography, Alert, InputAdornment, IconButton } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
-import './CreateAccount.css'
+import './CreateAccount.css';
 
 const CreateAccount = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -23,7 +26,7 @@ const CreateAccount = () => {
 
         // Redirect to sign-in page after 2 seconds
         setTimeout(() => {
-          navigate('/signin');
+          navigate('/');
         }, 2000);
       }
     } catch (error) {
@@ -36,32 +39,60 @@ const CreateAccount = () => {
     }
   };
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className='whole' style={{display:'flex', alignItems:'center'}}>
-    <Container maxWidth="xs"  sx={{background:'white', padding:'10px', opacity:'90%', boxShadow:'0 0 5px 5px'}} >
-      <Typography variant="h4" gutterBottom>Create Account</Typography>
-      {successMessage && <Alert severity="success">{successMessage}</Alert>}
-      {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
-      <TextField
-        label="Email"
-        fullWidth
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        margin="normal"
-      />
-      <TextField
-        label="Password"
-        type="password"
-        fullWidth
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        margin="normal"
-      />
-      <Button variant="contained"  onClick={handleCreateAccount} fullWidth
-      sx={{background:'#FECF06'}}
-      >Create Account</Button>
-      <Link to="/signin"><Typography sx={{paddingTop:'10px'}}>Click if you have account</Typography></Link> 
-    </Container>
+    <div className='whole' style={{ display: 'flex', alignItems: 'center' }}>
+      <Container maxWidth="xs" sx={{ background: 'white', padding: '10px', opacity: '90%', boxShadow: '0 0 5px 5px' }}>
+        <Typography variant="h4" gutterBottom>Create Account</Typography>
+        {successMessage && <Alert severity="success">{successMessage}</Alert>}
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        <TextField
+          label="Email"
+          fullWidth
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          fullWidth
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          margin="normal"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button
+          variant="contained"
+          onClick={handleCreateAccount}
+          fullWidth
+          sx={{ background: '#FECF06' }}
+        >
+          Create Account
+        </Button>
+        <Link to="/">
+          <Typography sx={{ paddingTop: '10px' }}>Click if you have account</Typography>
+        </Link>
+      </Container>
     </div>
   );
 };

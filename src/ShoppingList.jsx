@@ -2,25 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {setLists,setItems,addItem,deleteItem,updateItem,} from "./shoppingListSlice";
 import axios from "axios";
-import {
-  Container,Button,Typography,TextField,Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Modal,
-  Box,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Divider,
-  Fab
-} from "@mui/material";
+import {Container,Button,Typography,TextField,Select,MenuItem,FormControl,InputLabel,Modal,Box,Drawer,IconButton,List,ListItem,ListItemText,ListItemIcon,Divider,Fab} from "@mui/material";
 // import { orange } from '@mui/material/colors';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+// import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { useTheme } from "@mui/material/styles";
 import GroceryIcon from "@mui/icons-material/ShoppingCart";
 import HouseholdIcon from "@mui/icons-material/Home";
@@ -34,9 +19,9 @@ import Carousel from "./Carousel";
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
-  const lists = useSelector((state) => state.shoppingList.lists);
+  // const lists = useSelector((state) => state.shoppingList.lists);
   const items = useSelector((state) => state.shoppingList.items);
-  const user = useSelector((state) => state.user); // Assuming user data is stored in the user slice
+  const user = useSelector((state) => state.user); 
   const [openModal, setOpenModal] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [newItemName, setNewItemName] = useState("");
@@ -44,9 +29,9 @@ const ShoppingList = () => {
   const [newItemCategory, setNewItemCategory] = useState("");
   const [selectedListId, setSelectedListId] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
-  const [editItemId, setEditItemId] = useState(null); // State for item to edit
-  const [categoryFilter, setCategoryFilter] = useState(""); // State for category filter
-  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const [editItemId, setEditItemId] = useState(null); 
+  const [categoryFilter, setCategoryFilter] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
 
 
 
@@ -145,7 +130,7 @@ const ShoppingList = () => {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => {
     setOpenModal(false);
-    setEditItemId(null); // Reset edit item ID
+    setEditItemId(null); 
   };
   const handleOpenDrawer = () => setDrawerOpen(true);
   const handleCloseDrawer = () => setDrawerOpen(false);
@@ -156,7 +141,7 @@ const ShoppingList = () => {
       quantity: newItemQuantity,
       category: newItemCategory,
       listId: selectedListId,
-      userId: user.userId, // Associate the item with the current user
+      userId: user.userId, 
     };
     const response = await axios.post("http://localhost:3001/items", newItem);
     dispatch(addItem(response.data));
@@ -170,7 +155,7 @@ const ShoppingList = () => {
       quantity: newItemQuantity,
       category: newItemCategory,
       listId: selectedListId,
-      userId: user.userId, // Associate the item with the current user
+      userId: user.userId, 
     };
     const response = await axios.put(
       `http://localhost:3001/items/${editItemId}`,
@@ -187,7 +172,7 @@ const ShoppingList = () => {
   };
 
   const handleEditItem = (item) => {
-    setEditItemId(item.id); // Set the item to be edited
+    setEditItemId(item.id); 
   };
 
   const handleCategoryFilter = (category) => {
