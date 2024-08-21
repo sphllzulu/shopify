@@ -1,9 +1,6 @@
-
-
-
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Alert, InputAdornment, IconButton } from '@mui/material';
+import { Container, TextField, Button, Typography, Alert, InputAdornment, IconButton, FormControlLabel, Checkbox } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
@@ -15,9 +12,15 @@ const CreateAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [consent, setConsent] = useState(false);
   const navigate = useNavigate();
 
   const handleCreateAccount = async () => {
+    if (!consent) {
+      setErrorMessage('You must agree to the privacy policy and terms of service.');
+      return;
+    }
+
     try {
       const response = await axios.post('http://localhost:3001/users', { email, password });
       if (response.status === 201) {
@@ -81,16 +84,21 @@ const CreateAccount = () => {
             ),
           }}
         />
+        <FormControlLabel
+          control={<Checkbox checked={consent} onChange={(e) => setConsent(e.target.checked)} />}
+          label={<Typography>I agree to the <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-service">Terms of Service</Link></Typography>}
+        />
         <Button
           variant="contained"
           onClick={handleCreateAccount}
           fullWidth
           sx={{ background: '#FECF06' }}
+          disabled={!consent}  // Disable button if consent is not given
         >
           Create Account
         </Button>
         <Link to="/">
-          <Typography sx={{ paddingTop: '10px' }}>Click if you have account</Typography>
+          <Typography sx={{ paddingTop: '10px' }}>Click if you have an account</Typography>
         </Link>
       </Container>
     </div>

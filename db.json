@@ -114,6 +114,16 @@
       "id": "2dac",
       "email": "mahlatse",
       "password": "gfghfhj"
+    },
+    {
+      "id": "322a",
+      "email": "mahlatse",
+      "password": "gfghfhj"
+    },
+    {
+      "id": "7d43",
+      "email": "lakhe@gmail.com",
+      "password": "fsdfhsdghs"
     }
   ],
   "shoppingLists": [],
@@ -283,6 +293,14 @@
       "name": "remote",
       "quantity": "2",
       "category": "Other",
+      "listId": "",
+      "userId": "2dac"
+    },
+    {
+      "id": "bad1",
+      "name": "banana",
+      "quantity": "1",
+      "category": "Household",
       "listId": "",
       "userId": "2dac"
     }

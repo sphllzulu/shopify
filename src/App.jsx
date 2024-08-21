@@ -9,6 +9,8 @@ import ShoppingList from './ShoppingList';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
 
 const App = () => {
   const userEmail = useSelector((state) => state.user.email);
@@ -33,6 +35,8 @@ const App = () => {
         <Route path="/list" element={<ShoppingList />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </>
   );

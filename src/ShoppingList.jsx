@@ -17,6 +17,7 @@ import SendIcon from '@mui/icons-material/Send';
 import Carousel from "./Carousel";
 
 
+
 const ShoppingList = () => {
   const dispatch = useDispatch();
   // const lists = useSelector((state) => state.shoppingList.lists);
@@ -116,7 +117,7 @@ const ShoppingList = () => {
     }
   }, [items, user.userId, categoryFilter, searchQuery]);
   
-
+//
   const handleSendItems = () => {
     const emailBody = filteredItems
       .map((item) => `Item: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`)
