@@ -15,12 +15,12 @@ const userSlice = createSlice({
       localStorage.setItem('userEmail', action.payload.email);
       localStorage.setItem('userId', action.payload.userId); // Save userId in localStorage
     },
-    clearUser: (state) => {
-      state.email = null;
-      state.userId = null; // Clear userId from state
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('userId'); // Clear userId from localStorage
-    },
+    // clearUser: (state) => {
+    //   state.email = null;
+    //   state.userId = null; // Clear userId from state
+    //   localStorage.removeItem('userEmail');
+    //   localStorage.removeItem('userId'); // Clear userId from localStorage
+    // },
   },
 });
 

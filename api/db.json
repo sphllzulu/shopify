@@ -124,6 +124,21 @@
       "id": "7d43",
       "email": "lakhe@gmail.com",
       "password": "fsdfhsdghs"
+    },
+    {
+      "id": "f479",
+      "email": "mahlatse@mlab.co.za",
+      "password": "fjhjfgfgh"
+    },
+    {
+      "id": "ead6",
+      "email": "khabonina@google.com",
+      "password": "jfdgd"
+    },
+    {
+      "id": "85c0",
+      "email": "john.doe@example.com",
+      "password": "password123"
     }
   ],
   "shoppingLists": [],
@@ -303,6 +318,54 @@
       "category": "Household",
       "listId": "",
       "userId": "2dac"
+    },
+    {
+      "id": "9113",
+      "name": "apples",
+      "quantity": "1",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "f479"
+    },
+    {
+      "name": "lux",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "f479",
+      "id": "bac0"
+    },
+    {
+      "name": "raspberry",
+      "quantity": "1",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "ead6",
+      "id": "04f5"
+    },
+    {
+      "name": "ipiyera",
+      "quantity": "1",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "ead6",
+      "id": "9525"
+    },
+    {
+      "id": "7ac6",
+      "name": "kotas",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "ead6"
+    },
+    {
+      "id": "d9b9",
+      "name": "banana",
+      "quantity": "2",
+      "category": "Household",
+      "listId": "",
+      "userId": "85c0"
     }
   ]
 }

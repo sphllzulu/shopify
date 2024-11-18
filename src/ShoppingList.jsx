@@ -40,22 +40,13 @@ const ShoppingList = () => {
   const slides = [
     {
       image: "bag.jpg",
-      title: "Slide 1",
-      description: "This is the first slide.",
-    },
-    {
-      image: "groceries.jpg",
-      title: "Slide 2",
-      description: "This is the second slide.",
-    },
-    {
-      image: "groceries.jpg",
-      title: "Slide 3",
-      description: "This is the third slide.",
-    },
+     
+    }
+    
   ];
 
   const theme = useTheme();
+
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -317,17 +308,7 @@ const ShoppingList = () => {
                 <MenuItem value="Other">Other</MenuItem>
               </Select>
             </FormControl>
-            {/* <FormControl fullWidth margin="normal">
-            <InputLabel>List</InputLabel>
-            <Select
-              value={selectedListId}
-              onChange={(e) => setSelectedListId(e.target.value)}
-            >
-              {lists.map(list => (
-                <MenuItem key={list.id} value={list.id}>{list.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
+            
             <Button
               variant="contained"
               color="primary"
