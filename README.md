@@ -5,6 +5,9 @@
 
 The **Shopping List App** is a functional and user-friendly web application that helps users manage their shopping lists efficiently. Built with React, Redux Toolkit, and Material-UI (MUI), this app offers a seamless experience for adding, editing, deleting, and organizing shopping items. The app also supports user authentication, allowing users to manage their own lists securely.
 
+## Design
+https://www.figma.com/design/qdC89Arz6qsTR2ggEo92p6/ShoppingList?node-id=16-14&t=gnjZ72AjLqOJ5xkQ-1
+
 ## Features
 
 - **User Authentication:** Secure sign-in and sign-up functionality.
@@ -55,7 +58,7 @@ npm start
 
 
 
-Open your browser and navigate to `http://localhost:3000` to view the application.
+Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
 
