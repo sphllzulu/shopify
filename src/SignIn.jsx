@@ -111,7 +111,7 @@ const SignIn = () => {
 
   const handleSignIn = async () => {
     try {
-      // Add headers to handle CORS
+      //  headers to handle CORS
       const response = await axios.get('https://shopping-list-five-ashy.vercel.app/api/users', {
         headers: {
           'Content-Type': 'application/json',

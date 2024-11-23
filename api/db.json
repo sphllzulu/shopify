@@ -139,6 +139,21 @@
       "id": "85c0",
       "email": "john.doe@example.com",
       "password": "password123"
+    },
+    {
+      "id": "2b8b",
+      "email": "lwano@gmail.com",
+      "password": "fhghhgug6"
+    },
+    {
+      "id": "452e",
+      "email": "njabulo@gmail.com",
+      "password": "Ntsw3mb4!"
+    },
+    {
+      "id": "8c79",
+      "email": "admin@example.com",
+      "password": "password123"
     }
   ],
   "shoppingLists": [],
@@ -366,6 +381,14 @@
       "category": "Household",
       "listId": "",
       "userId": "85c0"
+    },
+    {
+      "id": "fd64",
+      "name": "eggs",
+      "quantity": "2",
+      "category": "Grocery",
+      "listId": "",
+      "userId": "452e"
     }
   ]
 }

@@ -22,7 +22,7 @@ const CreateAccount = () => {
     }
 
     try {
-      const response = await axios.post('https://shopping-list-five-ashy.vercel.app/users', { email, password });
+      const response = await axios.post('https://shopping-list-five-ashy.vercel.app/api/users', { email, password });
       if (response.status === 201) {
         setSuccessMessage('Account created successfully! Redirecting to sign in...');
         setErrorMessage('');

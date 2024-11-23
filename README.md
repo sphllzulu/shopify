@@ -39,26 +39,26 @@ https://www.figma.com/design/qdC89Arz6qsTR2ggEo92p6/ShoppingList?node-id=16-14&t
 
 ### Clone the Repository
 
-\`\`\`bash
+```bash
 git clone https://github.com/sphllzulu/shopify.git
 cd shopping-list-app
-\`\`\`
+```
 
 ### Install Dependencies
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
-### Start the JSON Server & Run the application
+### Start the JSON Server 
 
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 
 
-Open your browser and navigate to `http://localhost:5173` to view the application.
+Open your browser and navigate to `https://shopping-list-five-ashy.vercel.app/ to view and use the application.
 
 ## Usage
 
