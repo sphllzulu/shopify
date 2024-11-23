@@ -60,6 +60,8 @@ npm start
 
 Open your browser and navigate to `https://shopping-list-five-ashy.vercel.app/ to view and use the application.
 
+Disclaimer, the server has to be running locally to be able to use the app
+
 ## Usage
 
 1. **Sign Up / Sign In**: Create an account or log in with your existing credentials.
@@ -69,36 +71,11 @@ Open your browser and navigate to `https://shopping-list-five-ashy.vercel.app/ t
 5. **Search & Filter**: Use the search bar or category icons to filter your items.
 6. **Send List via Email**: Share your shopping list by clicking the send icon.
 
-## File Structure
-
-\`\`\`
-├── public
-├── src
-│   ├── components
-│   │   ├── ShoppingList.jsx
-│   │   ├── SignIn.jsx
-│   │   ├── SignUp.jsx
-│   │   ├── Carousel.jsx
-│   │   └── ...
-│   ├── features
-│   │   ├── shoppingListSlice.js
-│   │   ├── userSlice.js
-│   │   └── ...
-│   ├── App.js
-│   ├── index.js
-│   ├── store.js
-│   └── ...
-├── db.json
-├── package.json
-└── README.md
-\`\`\`
 
 ## Contributing
 
 Contributions are welcome! If you have any suggestions, please feel free to create a pull request or submit an issue.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
