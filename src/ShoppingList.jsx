@@ -50,12 +50,12 @@ const ShoppingList = () => {
 
   useEffect(() => {
     const fetchLists = async () => {
-      const response = await axios.get("http://localhost:3001/shoppingLists");
+      const response = await axios.get("https://shopify-4px2.onrender.com/shoppingLists");
       dispatch(setLists(response.data));
     };
 
     const fetchItems = async () => {
-      const response = await axios.get("http://localhost:3001/items");
+      const response = await axios.get("https://shopify-4px2.onrender.com/items");
       dispatch(setItems(response.data));
     };
 
@@ -135,7 +135,7 @@ const ShoppingList = () => {
       listId: selectedListId,
       userId: user.userId, 
     };
-    const response = await axios.post("http://localhost:3001/items", newItem);
+    const response = await axios.post("https://shopify-4px2.onrender.com/items", newItem);
     dispatch(addItem(response.data));
     handleCloseModal();
     handleOpenDrawer();
@@ -150,7 +150,7 @@ const ShoppingList = () => {
       userId: user.userId, 
     };
     const response = await axios.put(
-      `http://localhost:3001/items/${editItemId}`,
+      `https://shopify-4px2.onrender.com/items/${editItemId}`,
       updatedItem
     );
     dispatch(updateItem(response.data));
@@ -159,7 +159,7 @@ const ShoppingList = () => {
   };
 
   const handleDeleteItem = async (itemId) => {
-    await axios.delete(`http://localhost:3001/items/${itemId}`);
+    await axios.delete(`https://shopify-4px2.onrender.com/items/${itemId}`);
     dispatch(deleteItem(itemId));
   };
 
