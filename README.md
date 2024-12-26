@@ -58,9 +58,9 @@ npm start
 
 
 
-Open your browser and navigate to `https://shopping-list-five-ashy.vercel.app/ to view and use the application.
+Open your browser and navigate to https://shopify-1-h4k2.onrender.com to view and use the application.
 
-Disclaimer, the server has to be running locally to be able to use the app
+
 
 ## Usage
 
