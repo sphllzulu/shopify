@@ -8,6 +8,10 @@ The **Shopping List App** is a functional and user-friendly web application that
 ## Design
 https://www.figma.com/design/qdC89Arz6qsTR2ggEo92p6/ShoppingList?node-id=16-14&t=gnjZ72AjLqOJ5xkQ-1
 
+## Screenshot
+![Shoppinglist](https://github.com/user-attachments/assets/28dc3015-9916-455f-9c1c-c88b69c88e07)
+
+
 ## Features
 
 - **User Authentication:** Secure sign-in and sign-up functionality.
